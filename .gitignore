@@ -23,6 +23,8 @@ artifacts/
 
 # Dataset - keep raw data local
 dataset/raw/*
+!dataset/raw/*.dvc
+!dataset/raw/.gitignore
 !dataset/raw/.gitkeep
 
 # Generated reports
