@@ -1,0 +1,33 @@
+
+# Data processing
+pandas
+numpy
+scipy
+
+# Machine learning
+scikit-learn
+imbalanced-learn
+xgboost
+joblib
+
+# Explainable AI
+shap
+
+# Visualization
+matplotlib
+seaborn
+
+# API
+fastapi
+uvicorn[standard]
+
+# Experiment tracking
+mlflow
+
+# Testing and code quality
+pytest
+httpx
+ruff
+
+# Data validation and monitoring
+evidently

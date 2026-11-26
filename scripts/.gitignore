@@ -1,0 +1,39 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Machine learning artifacts
+mlruns/
+artifacts/
+*.joblib
+*.pkl
+
+# Dataset - keep raw data local
+dataset/raw/*
+!dataset/raw/.gitkeep
+
+# Generated reports
+reports/eda/
+
+# IDE
+.vscode/
+
+# Operating system
+.DS_Store
+Thumbs.db
+
