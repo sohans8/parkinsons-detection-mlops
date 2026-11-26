@@ -8,7 +8,6 @@ from sklearn.feature_selection import SelectFromModel
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedGroupKFold, cross_validate
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.pipeline import Pipeline as SklearnPipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
@@ -61,14 +60,14 @@ def create_models():
 
         "SVM": SVC(
             kernel="rbf",
-            probability=True,
+            probability=False,
             random_state=RANDOM_STATE
         ),
 
         "Random Forest": RandomForestClassifier(
             n_estimators=300,
             random_state=RANDOM_STATE,
-            n_jobs=-1
+            n_jobs=1
         ),
 
         "XGBoost": XGBClassifier(
@@ -79,7 +78,7 @@ def create_models():
             colsample_bytree=0.8,
             eval_metric="logloss",
             random_state=RANDOM_STATE,
-            n_jobs=-1
+            n_jobs=1
         ),
 
         "KNN": KNeighborsClassifier(
@@ -100,7 +99,7 @@ def create_pipeline(model):
         estimator=RandomForestClassifier(
             n_estimators=200,
             random_state=RANDOM_STATE,
-            n_jobs=-1
+            n_jobs=1
         ),
         max_features=TOP_FEATURES,
         threshold=-float("inf")
@@ -108,11 +107,14 @@ def create_pipeline(model):
 
     pipeline = Pipeline([
         ("feature_selection", feature_selector),
+
+        ("scaling", StandardScaler()),
+
         ("smote", SMOTE(
             random_state=RANDOM_STATE,
             k_neighbors=5
         )),
-        ("scaling", StandardScaler()),
+
         ("classifier", model)
     ])
 
